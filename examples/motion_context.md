@@ -27,19 +27,20 @@ BGMなし。
 
 前のクリップの「行ってきます」というセリフと
 猫の鳴き声を繰り返さない。
-Purpose
+
+## Purpose
 
 This example demonstrates how to use Motion Context for a direct continuation between clips.
 
 The generated prompt should:
 
-continue from the final visual and motion state of the previous clip
-preserve the same character and environment continuity
-avoid replaying completed dialogue or actions
-keep the cat inside the apartment
-prevent the previous line 「行ってきます」 from being spoken again
-prevent the cat's previous meow from being repeated
-maintain a natural transition into the next action
-use no narration or background music
+- continue from the final visual and motion state of the previous clip
+- preserve the intended character, environment, and motion continuity
+- avoid replaying dialogue, actions, or sound events that were already completed in the previous clip
+- follow the new actions specified for the current clip
+- preserve only the elements that should continue from the previous clip
+- avoid carrying over obsolete actions, dialogue, or scene elements
+- maintain a natural transition into the next action
+- follow the user's dialogue, narration, music, and sound instructions exactly
 
 The generated output should follow the required six-section format.
