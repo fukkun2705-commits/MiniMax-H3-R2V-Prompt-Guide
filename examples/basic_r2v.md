@@ -28,14 +28,21 @@
 BGM：
 穏やかで、ほっこりした雰囲気の優しいインストゥルメンタルBGM。
 
-Purpose
+## Purpose
 
-This example demonstrates a basic MiniMax H3 Reference-to-Video prompt request using:
+This example demonstrates the general input structure for a MiniMax H3 Reference-to-Video request.
 
-one character reference
-one environment reference
-a simple 10-second action
-no dialogue
-no narration
+Users should replace the contents of the Input section with their own video requirements.
 
-The generated output should follow the required six-section format.
+The assistant should:
+
+- analyze the role of each provided reference image
+- preserve referenced subjects and environments according to the user's instructions
+- follow explicitly requested changes, removals, and continuity constraints
+- organize actions naturally within the requested video duration
+- preserve Japanese dialogue exactly when provided
+- follow the user's dialogue, narration, sound, and music instructions
+- avoid adding unintended characters, dialogue, actions, or scene elements
+- generate the final prompt using the required six-section format
+
+The Purpose section does not need to be edited for each new video request.
