@@ -1,4 +1,4 @@
-````markdown
+
 # MiniMax H3 R2V Prompt Guide
 
 A prompt guide and GPT configuration for generating structured English prompts for MiniMax H3 Reference-to-Video (R2V).
@@ -48,17 +48,17 @@ Generated prompts use the following structure:
 MiniMax-H3-R2V-Prompt-Guide/
 ├─ README.md
 ├─ LICENSE
+├─ CHANGELOG.md
 ├─ instructions/
 │  └─ GPT_Instructions.txt
 ├─ knowledge/
 │  ├─ H3_R2V_Master_Instructions.txt
 │  └─ VIDEO_PROMPT_WRITING_GUIDE_ref_en.md
-├─ examples/
-│  ├─ basic_r2v.md
-│  ├─ motion_context.md
-│  └─ multi_subject.md
-└─ CHANGELOG.md
-````
+└─ examples/
+   ├─ basic_r2v.md
+   ├─ motion_context.md
+   └─ multi_subject.md
+```
 
 ## How to Use
 
@@ -99,6 +99,12 @@ See the `examples` folder for tested input patterns:
 - `motion_context.md` — continuation using Motion Context
 - `multi_subject.md` — multiple-character identity and position consistency
 
+## Recommended Model
+
+For complex Reference-to-Video prompts, Motion Context, and multi-subject scenes, a reasoning-capable model is recommended.
+
+## Example Input
+
 ```text
 生成方式：MiniMax H3 Reference to Video
 動画尺：10秒
@@ -117,22 +123,11 @@ See the `examples` folder for tested input patterns:
 
 ## Notes
 
-* Explicit user instructions to preserve, change, or remove visual elements take priority.
-* Japanese dialogue should remain in Japanese unless explicitly requested otherwise.
-* Motion Context should preserve continuity without unnecessarily repeating completed dialogue, actions, or environments.
-* Missing information may be completed conservatively when needed for natural video generation.
+- Explicit user instructions to preserve, change, or remove visual elements take priority.
+- Japanese dialogue should remain in Japanese unless explicitly requested otherwise.
+- Motion Context should preserve continuity without unnecessarily repeating completed dialogue, actions, or environments.
+- Missing information may be completed conservatively when needed for natural video generation.
 
 ## License
 
 Apache License 2.0
-
-```
-
----
-
-## 次の操作
-- いまのREADME本文を全部これに置き換える
-- そのあと **Preview** を押す
-
-Previewで問題なければ、次にコミットします。
-```
