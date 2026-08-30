@@ -38,7 +38,7 @@ MiniMax-H3-R2V-Prompt-Guide/
 ├─ instructions/
 │  └─ GPT_Instructions.txt
 ├─ knowledge/
-│  ├─ H3_R2V_Master_Instructions
+│  ├─ H3_R2V_Master_Instructions.txt
 │  └─ VIDEO_PROMPT_WRITING_GUIDE_ref_en.md
 ├─ examples/
 │  ├─ basic_r2v.md
