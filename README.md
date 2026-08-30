@@ -5,6 +5,19 @@ A prompt guide and GPT configuration for generating structured English prompts f
 
 This repository is designed to help users build consistent MiniMax H3 prompts from Japanese scene descriptions, reference images, and Motion Context.
 
+## 日本語ユーザー向け
+
+このリポジトリは、MiniMax H3 Reference-to-Video（R2V）向けの英語プロンプトを、日本語のシーン説明から生成するためのChatGPT用設定・ガイドです。
+
+利用方法は以下のどちらかです。
+
+- Custom GPTを作成できる場合：`instructions/GPT_Instructions.txt` をGPTの「指示」に貼り付け、`knowledge` フォルダ内の2ファイルをKnowledgeとしてアップロードしてください。
+- Custom GPTを利用しない場合：ChatGPT Projectを作成し、同じ指示文とKnowledgeファイルをProjectへ設定してください。
+
+ユーザーは日本語で動画内容、参照画像の役割、Motion Context、セリフなどを入力できます。最終的なMiniMax H3用プロンプトは英語で生成されます。
+
+詳しい入力例は `examples` フォルダを参照してください。
+
 ## Features
 
 - MiniMax H3 Reference-to-Video prompt generation
