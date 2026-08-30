@@ -1,6 +1,9 @@
 
 # MiniMax H3 R2V Prompt Guide
 
+**Version:** v0.1.0  
+**Status:** Initial public draft
+
 A prompt guide and GPT configuration for generating structured English prompts for MiniMax H3 Reference-to-Video (R2V).
 
 This repository is designed to help users build consistent MiniMax H3 prompts from Japanese scene descriptions, reference images, and Motion Context.
