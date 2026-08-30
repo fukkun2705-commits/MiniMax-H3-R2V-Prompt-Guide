@@ -49,17 +49,42 @@ MiniMax-H3-R2V-Prompt-Guide/
 
 ## How to Use
 
-1. Create a custom GPT or a ChatGPT Project.
-2. Copy the contents of `instructions/GPT_Instructions.txt` into the GPT or Project instructions.
-3. Upload the files in the `knowledge` folder as Knowledge / Project files.
-4. Enter your MiniMax H3 R2V scene description in Japanese.
-5. The assistant will generate a structured English prompt for MiniMax H3.
+There are two recommended ways to use this prompt guide with ChatGPT.
 
-## Recommended Model
+### Option 1: Custom GPT
 
-For complex Reference-to-Video prompts, Motion Context, and multi-subject scenes, a reasoning-capable model is recommended.
+If your ChatGPT account allows creating a custom GPT:
 
-## Example Input
+1. Create a new GPT.
+2. Open the GPT configuration screen.
+3. Copy the full contents of `instructions/GPT_Instructions.txt` into the GPT's Instructions field.
+4. Upload the following files as Knowledge:
+   - `knowledge/H3_R2V_Master_Instructions.txt`
+   - `knowledge/VIDEO_PROMPT_WRITING_GUIDE_ref_en.md`
+5. Select a reasoning-capable model when available.
+6. Enter your MiniMax H3 Reference-to-Video request in Japanese.
+
+The GPT will return a structured English prompt using the required six-section format.
+
+### Option 2: ChatGPT Project
+
+If custom GPT creation or sharing is unavailable, you can use a ChatGPT Project instead.
+
+1. Create a new ChatGPT Project.
+2. Copy the full contents of `instructions/GPT_Instructions.txt` into the Project Instructions.
+3. Upload the following files to the Project:
+   - `knowledge/H3_R2V_Master_Instructions.txt`
+   - `knowledge/VIDEO_PROMPT_WRITING_GUIDE_ref_en.md`
+4. Start a new chat inside the Project.
+5. Enter your MiniMax H3 Reference-to-Video request in Japanese.
+
+### Example Requests
+
+See the `examples` folder for tested input patterns:
+
+- `basic_r2v.md` — basic Reference-to-Video generation
+- `motion_context.md` — continuation using Motion Context
+- `multi_subject.md` — multiple-character identity and position consistency
 
 ```text
 生成方式：MiniMax H3 Reference to Video
