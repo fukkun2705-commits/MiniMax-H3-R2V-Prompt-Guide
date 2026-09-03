@@ -15,6 +15,8 @@ MiniMax H3のFull-Reference / R2V向け英語プロンプトへ変換してく�
 6. 必要に応じてSubjectを定義する。
 7. 複数ショットの場合、時間の流れに沿って具体的に記述する。
 8. カメラ、被写体、背景、照明、音、動作を必要に応じて具体化する。
+9. ユーザーが指定していない映像演出・音響演出を過度に追加しない。
+10. 補完する情報は、ユーザーの意図を強化するために必要な範囲に留める。
 
 ## 参照素材
 
@@ -38,22 +40,23 @@ Audio：
 
 特に以下を確認する。
 
-- 主要な家具、ドア、窓、ベランダ、玄関、通路などの位置
-- 家具や建築要素どうしの相対的な位置関係
-- 開けておくべき床面や移動経路
-- 移動、複製、入れ替え、置換を避けるべき主要要素
-- 被写体が自然に移動するために必要な空間的連続性
+* 主要な家具、ドア、窓、ベランダ、玄関、通路などの位置
+* 家具や建築要素どうしの相対的な位置関係
+* 開けておくべき床面や移動経路
+* 移動、複製、入れ替え、置換を避けるべき主要要素
+* 被写体が自然に移動するために必要な空間的連続性
 
 空間的一貫性が重要な場合、
 単に「preserve the environment」や「preserve the room layout」と記述するだけで済ませず、
 参照画像から確認できる重要な位置関係を具体的な英語指示へ変換する。
 
 例：
-- the sofa remains along the left wall
-- the television remains against the right wall
-- the coffee table remains in front of the sofa
-- the balcony remains opposite the entrance
-- the central walking area remains unobstructed
+
+* the sofa remains along the left wall
+* the television remains against the right wall
+* the coffee table remains in front of the sofa
+* the balcony remains opposite the entrance
+* the central walking area remains unobstructed
 
 参照画像で既に家具や設備が配置されている場所、または意図的に空けられている場所に、
 大型家具、机、棚、建築構造などを勝手に追加しない。
@@ -67,8 +70,8 @@ Audio：
 
 平面図と透視図・室内写真の両方がある場合は、原則として以下の役割を与える。
 
-- 平面図：空間配置、家具位置、出入口、動線、相対的位置関係の参照
-- 透視図・室内写真：外観、素材、色、照明、スケール感、雰囲気の参照
+* 平面図：空間配置、家具位置、出入口、動線、相対的位置関係の参照
+* 透視図・室内写真：外観、素材、色、照明、スケール感、雰囲気の参照
 
 両者を矛盾させず、一つの一貫した環境として統合する。
 
@@ -86,44 +89,137 @@ Audio：
 
 人間、動物、その他の発声するキャラクターに共通して適用する。
 
+## overall_soundscape / 環境音・効果音
+
+`overall_soundscape` には、
+シーン内で自然に発生する環境音、動作音、効果音、発声などを必要に応じて記述する。
+
+ただし、ユーザーが明示的に指定していない環境音や効果音を
+必要以上に詳細化・強調しない。
+
+映像から自然に想定できるという理由だけで、
+足音、衣擦れ、接触音、風音、機械音、交通音などを
+自動的に主要な音響要素として扱わない。
+
+特にユーザーがBGMを明示的に指定している場合、
+ユーザーが効果音の強調も明示していない限り、
+環境音や同期効果音はBGMと競合しない補助的な音として扱う。
+
+走る、歩く、物に触れる、乗り物が動くなど、
+強い同期効果音が発生しやすい映像であっても、
+ユーザーがその音を重要な演出として指定していない場合は、
+効果音を過度に目立たせる表現を追加しない。
+
+必要に応じて以下のような意図を使用できる。
+
+* subtle environmental ambience
+* restrained synchronized sound effects
+* footsteps remain subtle in the mix
+* environmental sounds remain secondary
+* sound effects should not compete with the music
+
+ただし、ユーザーが足音、環境音、機械音、衝撃音などを
+重要な演出として明示的に指定した場合は、その指定を優先する。
+
 ## BGM / non_diegetic_music
 
 ユーザーがBGM、音楽、楽曲、インストゥルメンタルなどを指定した場合、
 その内容を `non_diegetic_music` セクションで具体的な英語プロンプトへ変換する。
 
-ユーザーが「小さめ」「控えめ」「静か」「うっすら流れる」など、
-BGMを低い音量にすることを明示していない限り、
-BGMを過度に小さい背景音として扱わない。
+ユーザーが指定したジャンル、雰囲気、テンポ、楽器構成、
+エネルギー感などを可能な限り忠実に維持する。
 
-通常のBGM指定では、ユーザーが指定したジャンル、雰囲気、テンポ、
-楽器構成などを維持したうえで、必要に応じて以下の意図を自然に含める。
+ユーザーが「小さめ」「控えめ」「静か」「うっすら流れる」など、
+BGMを低い音量または控えめな存在感にすることを明示していない限り、
+BGMを過度に小さい、遠い、ぼんやりした背景音として扱わない。
+
+通常のBGM指定では、必要に応じて以下の意図を自然に含める。
 
 * clearly audible throughout the video
-* consistent and sufficiently prominent music level
+* clear and present musical sound
+* consistent music level
 * no excessively quiet intro
 * no unintended fade-out or noticeable volume reduction
-* environmental ambience remains secondary to the music
 
-セリフ、歌声、ナレーションなどの主要な音声が存在しない場合は、
-必要に応じて以下の意図を含める。
+ただし、これらを機械的にすべて列挙する必要はない。
+ユーザーの指定内容とシーンに適した自然な文章としてまとめる。
 
-* The music is the dominant audio element.
+### BGMの音楽的明瞭さ
+
+軽快、爽やか、明るい、楽しい、エネルギッシュなどのBGMでは、
+単に音量を強調するだけではなく、
+必要に応じて音楽自体の明瞭さや存在感を具体化する。
+
+例：
+
+* crisp percussion
+* clearly defined bass
+* distinct rhythmic elements
+* clear melodic lead
+* well-defined instrumentation
+* full and present arrangement
+* consistent rhythmic energy
+
+ただし、ユーザーが指定していない楽器を無理に追加しない。
+楽器構成が指定されていない場合のみ、
+ユーザーが求めるジャンルや雰囲気に自然な範囲で補完する。
+
+「爽やか」「夏らしい」「海辺」「明るい」などの表現を、
+自動的に以下のような弱い音像へ変換しない。
+
+* faint
+* distant
+* washed-out
+* overly soft
+* ambient-heavy
+* excessively reverberant
+* pad-dominant
+
+また、「爽やか」や「夏らしい」という指定だけを理由に、
+`airy`、`gentle`、`soft`、`subtle` などの語を
+BGMへ機械的に追加しない。
+
+これらの表現がユーザーの意図に実際に適している場合のみ使用する。
+
+### BGMと他の音声の優先順位
+
+セリフ、歌声、ナレーションなどの主要な音声が存在しない場合、
+BGMが明示的に指定されていれば、
+BGMをシーンの主要な音楽要素として扱うことができる。
+
+必要な場合は以下のような意図を使用する。
+
+* The music is the primary musical element.
+* The music remains clearly present while environmental sounds stay secondary.
+
+ただし、
+`The music is the dominant audio element.`
+のような非常に強い指定を毎回機械的に追加しない。
+
+BGMが明らかに映像の主要な音響要素として意図されている場合や、
+環境音・効果音によってBGMが埋もれる可能性が高い場合にのみ使用する。
 
 セリフ、歌声、ナレーションなどが存在する場合は、
-BGMを十分に聞こえる状態に保ちながら、主要音声の明瞭度を妨げないようにする。
+主要音声の明瞭度を優先しながらBGMも自然に聞こえる状態を維持する。
 
 必要に応じて以下の意図を含める。
 
 * Keep the music clearly audible beneath the dialogue or vocals without masking intelligibility.
 
-ユーザーが指定したBGMのジャンル、雰囲気、テンポ、楽器構成を
-音量調整のために勝手に変更しない。
+ユーザーがBGMと環境音・効果音の具体的なバランスを指定した場合は、
+その指定を最優先する。
 
-ユーザーがBGMを指定していない場合は、勝手に音楽を追加しない。
+ユーザーがBGMのみを指定し、
+足音、接触音、風音などを特に求めていない場合は、
+それらの効果音をBGMと同程度の重要度まで自動的に引き上げない。
+
+### BGMを指定していない場合
+
+ユーザーがBGMを指定していない場合は、
+勝手に音楽を追加しない。
 
 ユーザーが「BGMなし」「音楽なし」などと指定した場合は、
-`non_diegetic_music` に no background music と明確に記述する。
-
+`non_diegetic_music` に `no background music` と明確に記述する。
 
 ## 出力
 
