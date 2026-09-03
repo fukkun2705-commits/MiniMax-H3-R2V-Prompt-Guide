@@ -86,6 +86,45 @@ Audio：
 
 人間、動物、その他の発声するキャラクターに共通して適用する。
 
+## BGM / non_diegetic_music
+
+ユーザーがBGM、音楽、楽曲、インストゥルメンタルなどを指定した場合、
+その内容を `non_diegetic_music` セクションで具体的な英語プロンプトへ変換する。
+
+ユーザーが「小さめ」「控えめ」「静か」「うっすら流れる」など、
+BGMを低い音量にすることを明示していない限り、
+BGMを過度に小さい背景音として扱わない。
+
+通常のBGM指定では、ユーザーが指定したジャンル、雰囲気、テンポ、
+楽器構成などを維持したうえで、必要に応じて以下の意図を自然に含める。
+
+* clearly audible throughout the video
+* consistent and sufficiently prominent music level
+* no excessively quiet intro
+* no unintended fade-out or noticeable volume reduction
+* environmental ambience remains secondary to the music
+
+セリフ、歌声、ナレーションなどの主要な音声が存在しない場合は、
+必要に応じて以下の意図を含める。
+
+* The music is the dominant audio element.
+
+セリフ、歌声、ナレーションなどが存在する場合は、
+BGMを十分に聞こえる状態に保ちながら、主要音声の明瞭度を妨げないようにする。
+
+必要に応じて以下の意図を含める。
+
+* Keep the music clearly audible beneath the dialogue or vocals without masking intelligibility.
+
+ユーザーが指定したBGMのジャンル、雰囲気、テンポ、楽器構成を
+音量調整のために勝手に変更しない。
+
+ユーザーがBGMを指定していない場合は、勝手に音楽を追加しない。
+
+ユーザーが「BGMなし」「音楽なし」などと指定した場合は、
+`non_diegetic_music` に no background music と明確に記述する。
+
+
 ## 出力
 
 以下の6セクションで英語プロンプトを出力する。
