@@ -309,6 +309,94 @@ BGMなしの場合に音楽を禁止するための否定表現を
 指定された非音楽音声のみを維持し、
 `non_diegetic_music` は `N/A` とする。
 
+### 楽曲セクションが複数クリップにまたがる場合
+
+ユーザーがイントロ、Aメロ、Bメロ、サビ、間奏、アウトロなどの
+楽曲構成を指定している場合、その構成は映像クリップ単位ではなく、
+Master Song上の連続した楽曲区間として扱う。
+
+1つの楽曲セクションが複数の動画クリップにまたがる場合、
+各クリップを別の楽曲セクションとして扱わない。
+
+例えば、
+Aメロが20秒あり、10秒クリップ2本で生成する場合は、
+
+Clip 2：
+Aメロ前半
+
+Clip 3：
+Aメロ後半
+
+のように解釈する。
+
+ただし、MiniMax H3へ渡す最終英語プロンプトでは、
+「Aメロ前半」「Aメロ後半」などの日本語ラベルをそのまま使用せず、
+意味を明確な英語へ変換する。
+
+例：
+
+Aメロ前半
+→ the first half of the verse section
+
+Aメロ後半
+→ the second half of the same verse section
+
+同じAメロの続き
+→ continue the same verse section from the previous clip
+
+必要に応じて、以下のような表現を使用する。
+
+* This clip covers the first half of the verse section.
+* The same verse continues into the next clip.
+* This clip covers the second half of the same verse section.
+* Continue naturally from the previous clip without treating this as a new musical section.
+
+実際のMaster Song上の音声開始位置や時間範囲は、
+ワークフロー側で指定されている場合、その設定を優先する。
+
+プロンプト内の楽曲セクション指定は、
+音声位置を厳密に制御するためではなく、
+現在のクリップが楽曲全体のどの部分に属しているかを
+映像演出上明確にするために使用する。
+
+楽曲セクションの境界がクリップ境界と一致しない場合でも、
+実際の楽曲構成を優先する。
+
+Clip番号が変わったという理由だけで、
+新しい楽曲セクションへ移行したものと解釈しない。
+
+### 楽曲連続性とMotion Contextの分離
+
+楽曲セクションの継続と、
+Motion Contextによる映像上の連続性は別々に判断する。
+
+同じ楽曲セクションが複数の動画クリップに継続していても、
+それだけを理由に、前クリップの被写体動作、カメラワーク、背景、
+構図、空間状態を自動的に継承しない。
+
+Motion Contextによる映像連続性は、
+ユーザーの指示文にMotion Context使用、
+前クリップからの継続、
+前の動きからそのまま続く、
+などの意図が明示されている場合に適用する。
+
+逆に、同じVerse、同じAメロ、同じサビなどが続いていても、
+ユーザーが別シーン、別カット、異なる構図、
+異なる場所から開始することを指定している場合は、
+楽曲の連続性だけを維持し、
+映像上は新しいシーンとして扱う。
+
+つまり、
+
+same musical section
+≠
+same visual motion continuity
+
+として扱う。
+
+楽曲セクションが継続している場合でも、
+映像連続性の有無はMotion Context関連の指示を基準に独立して判断する。
+
 ## Motion Context / クリップ連続性・Airlockルール
 
 ### Motion Context使用判定
